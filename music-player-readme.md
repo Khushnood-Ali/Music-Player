@@ -1,4 +1,4 @@
-# Music Player - Web Development Assignment
+# Music Player
 
 ## Project Overview
 
@@ -239,8 +239,4 @@ This project serves as an excellent learning resource for:
 
 ## License
 
-This project is developed for educational purposes as part of a web development assignment. Feel free to use and modify the code for learning and portfolio purposes.
-
----
-
-**Assignment Completion**: This music player fulfills all requirements specified in the original assignment, including user interface design, audio playback functionality, playlist management, responsive design, and comprehensive documentation.
+This project is developed for educational purposes. Feel free to use and modify the code for learning and portfolio purposes.
