@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player - Your Personal Audio Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="player-header">
+            <h1><i class="fas fa-music"></i> Music Player</h1>
+            <p>Your Personal Audio Experience</p>
+        </header>
+
+        <!-- File Upload Section -->
+        <section class="upload-section">
+            <div class="upload-controls">
+                <button class="btn btn--primary upload-btn" id="uploadBtn">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Upload Music
+                </button>
+                <button class="btn btn--secondary clear-btn" id="clearUploadsBtn">
+                    <i class="fas fa-trash-alt"></i>
+                    Clear Uploads
+                </button>
+            </div>
+            <div class="drag-drop-zone" id="dragDropZone">
+                <div class="drag-drop-content">
+                    <i class="fas fa-cloud-upload-alt drag-drop-icon"></i>
+                    <h3>Drag & Drop Audio Files Here</h3>
+                    <p>or click "Upload Music" to browse files</p>
+                    <p class="file-info">Supported: MP3, WAV, OGG, M4A, FLAC (Max 50MB each)</p>
+                </div>
+            </div>
+            <input type="file" id="fileInput" accept="audio/*" multiple style="display: none;">
+            
+            <!-- Upload Progress -->
+            <div class="upload-progress hidden" id="uploadProgress">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="uploadProgressFill"></div>
+                </div>
+                <span class="progress-text" id="uploadProgressText">Processing files...</span>
+            </div>
+        </section>
+
+        <main class="music-player">
+            <!-- Current Song Display -->
+            <section class="current-song">
+                <div class="album-art">
+                    <img id="albumCover" src="https://via.placeholder.com/300x300/333333/FFFFFF?text=🎵" alt="Album Cover">
+                    <div class="play-overlay hidden" id="playOverlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="song-info">
+                    <h2 id="currentTitle">Select a song to play</h2>
+                    <p id="currentArtist">Unknown Artist</p>
+                    <p id="currentAlbum">Unknown Album</p>
+                    <div class="track-counter">
+                        <span id="trackCounter">Track - of -</span>
+                    </div>
+                    <div class="file-info-display" id="fileInfoDisplay">
+                        <span class="file-size" id="fileSize"></span>
+                        <span class="file-format" id="fileFormat"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audio Element -->
+            <audio id="audioPlayer" preload="metadata"></audio>
+
+            <!-- Player Controls -->
+            <section class="player-controls">
+                <div class="main-controls">
+                    <button class="control-btn" id="prevBtn" title="Previous Track">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn primary" id="playPauseBtn" title="Play/Pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn" id="nextBtn" title="Next Track">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="control-btn" id="shuffleBtn" title="Shuffle">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="control-btn" id="repeatBtn" title="Repeat">
+                        <i class="fas fa-repeat"></i>
+                    </button>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <span class="time-display" id="currentTime">0:00</span>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                            <div class="progress-handle" id="progressHandle"></div>
+                        </div>
+                    </div>
+                    <span class="time-display" id="duration">0:00</span>
+                </div>
+
+                <!-- Volume Section -->
+                <div class="volume-section">
+                    <button class="control-btn" id="muteBtn" title="Mute/Unmute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="volume-container">
+                        <div class="volume-bar" id="volumeBar">
+                            <div class="volume-fill" id="volumeFill"></div>
+                            <div class="volume-handle" id="volumeHandle"></div>
+                        </div>
+                    </div>
+                    <span class="volume-display" id="volumeDisplay">100%</span>
+                </div>
+            </section>
+
+            <!-- Playlist Section -->
+            <section class="playlist-section">
+                <div class="playlist-header">
+                    <h3><i class="fas fa-list"></i> Playlist</h3>
+                    <div class="playlist-controls">
+                        <button class="btn btn--sm btn--secondary" id="selectAllBtn">
+                            <i class="fas fa-check-square"></i>
+                            Select All
+                        </button>
+                        <button class="btn btn--sm btn--secondary" id="deleteSelectedBtn">
+                            <i class="fas fa-trash"></i>
+                            Delete Selected
+                        </button>
+                    </div>
+                </div>
+                <div class="playlist" id="playlist">
+                    <!-- Playlist items will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="player-footer">
+            <p>&copy; 2025 Music Player | Built with HTML5, CSS3 & JavaScript</p>
+        </footer>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <i class="notification-icon"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
